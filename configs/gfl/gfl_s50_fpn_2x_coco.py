@@ -2,7 +2,7 @@ _base_ = [
     '../_base_/datasets/formula_detection.py',
     '../_base_/schedules/schedule_2x.py', '../_base_/default_runtime.py'
 ]
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type='BN', requires_grad=True)
 model = dict(
     type='GFL',
     pretrained='open-mmlab://resnest50',
