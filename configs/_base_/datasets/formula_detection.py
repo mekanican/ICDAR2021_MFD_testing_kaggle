@@ -1,5 +1,5 @@
 dataset_type = 'CocoDataset'
-data_root = '/data4/dataset/formula_icdar2021/'
+data_root = '../input/ibem-dataset/IBEM_dataset/'
 classes = ('embedded', 'isolated')
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
@@ -35,12 +35,6 @@ data = dict(
     train=[
         dict(
         type=dataset_type,
-        ann_file=data_root + 'Tr00/train_coco_sdk4.json',
-        img_prefix=data_root + 'Tr00/img/',
-        classes=classes,
-        pipeline=train_pipeline),
-        dict(
-        type=dataset_type,
         ann_file=data_root + 'Tr01/train_coco_sdk4.json',
         img_prefix=data_root + 'Tr01/img/',
         classes=classes,
@@ -53,20 +47,8 @@ data = dict(
         pipeline=train_pipeline),
         dict(
         type=dataset_type,
-        ann_file=data_root + 'Va00/train_coco_sdk4.json',
-        img_prefix=data_root + 'Va00/img/',
-        classes=classes,
-        pipeline=train_pipeline),
-        dict(
-        type=dataset_type,
         ann_file=data_root + 'Va01/train_coco_sdk4.json',
         img_prefix=data_root + 'Va01/img/',
-        classes=classes,
-        pipeline=train_pipeline),
-        dict(
-        type=dataset_type,
-        ann_file=data_root + 'Ts00/train_coco_sdk4.json',
-        img_prefix=data_root + 'Ts00/img/',
         classes=classes,
         pipeline=train_pipeline),
         dict(
@@ -78,14 +60,14 @@ data = dict(
         ],
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'Ts01/train_coco_sdk4.json',
-        img_prefix=data_root + 'Ts01/img/',
+        ann_file=data_root + 'Va01/train_coco_sdk4.json',
+        img_prefix=data_root + 'Va01/img/',
         classes=classes,
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'Ts10/train_coco_sdk4.json',
-        img_prefix=data_root + 'Ts10/img/',
+        ann_file=data_root + 'Ts11/train_coco_sdk4.json',
+        img_prefix=data_root + 'Ts11/img/',
         classes=classes,
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='bbox')

@@ -228,7 +228,7 @@ def main():
                 result += tmp
         f.write(result)
         f.close()
-    with open('/data4/dataset/formula_icdar2021/Ts10/result.csv', 'w') as g:
+    with open('/kaggle/working/result.csv', 'w') as g:
         g_csv = csv.writer(g)
         g_csv.writerows(rows)
 
