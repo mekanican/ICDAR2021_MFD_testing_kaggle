@@ -145,18 +145,19 @@ def display_results(true_pos_IoU, total_pred, total_gt):
 
     #####################################################################################
     #######  F1 score - IoU metric ######################################################
+    normalized = 0.00001
     print("\nF1-score using IoU metric")
     # F1 score for embedded mathematical expressions using IoU metric
-    f1_score_emb_IoU = round(2*precision_emb_IoU*recall_emb_IoU/(precision_emb_IoU+recall_emb_IoU),4)
+    f1_score_emb_IoU = round(2*precision_emb_IoU*recall_emb_IoU/(precision_emb_IoU+recall_emb_IoU + normalized),4)
     print("F1-score embedded:\t",f1_score_emb_IoU*100, "( p:", round(precision_emb_IoU,4)*100, ", r:", round(recall_emb_IoU,4)*100, ")")    
 
     # F1 score for isolated mathematical expressions using IoU metric
-    f1_score_iso_IoU = round(2*precision_iso_IoU*recall_iso_IoU/(precision_iso_IoU+recall_iso_IoU),4)
+    f1_score_iso_IoU = round(2*precision_iso_IoU*recall_iso_IoU/(precision_iso_IoU+recall_iso_IoU + normalized),4)
     print("F1-score isolated:\t",f1_score_iso_IoU*100, "( p:", round(precision_iso_IoU,4)*100, ", r:", round(recall_iso_IoU,4)*100, ")")    
 
     # F1 score for whole sistem using IoU metric
-    prec_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_pred["embedded"]+total_pred["isolated"])
-    recall_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_gt["embedded"]+total_gt["isolated"])
+    prec_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_pred["embedded"]+total_pred["isolated"]+normalized)
+    recall_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_gt["embedded"]+total_gt["isolated"] + normalized)
     f1_score_IoU = round(2* prec_IoU*recall_IoU / (prec_IoU+recall_IoU),4)
     print("F1-score whole system:\t", f1_score_IoU*100, "( p:", round(prec_IoU,4)*100, ", r:", round(recall_IoU,4)*100, ")")
     
