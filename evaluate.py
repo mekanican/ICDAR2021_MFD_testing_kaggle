@@ -158,7 +158,7 @@ def display_results(true_pos_IoU, total_pred, total_gt):
     # F1 score for whole sistem using IoU metric
     prec_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_pred["embedded"]+total_pred["isolated"]+normalized)
     recall_IoU = (true_pos_IoU["embedded"]+true_pos_IoU["isolated"]) / (total_gt["embedded"]+total_gt["isolated"] + normalized)
-    f1_score_IoU = round(2* prec_IoU*recall_IoU / (prec_IoU+recall_IoU),4)
+    f1_score_IoU = round(2* prec_IoU*recall_IoU / (prec_IoU+recall_IoU+ normalized),4)
     print("F1-score whole system:\t", f1_score_IoU*100, "( p:", round(prec_IoU,4)*100, ", r:", round(recall_IoU,4)*100, ")")
     
 
