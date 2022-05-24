@@ -142,7 +142,7 @@ class DynamicRoIHead(StandardRoIHead):
         self.bbox_assigner.neg_iou_thr = new_iou_thr
         self.bbox_assigner.min_pos_iou = new_iou_thr
         new_beta = min(self.train_cfg.dynamic_rcnn.initial_beta,
-                       np.median(self.beta_history))
+                       np.mean(self.beta_history)) #median
         self.beta_history = []
         self.bbox_head.loss_bbox.beta = new_beta
         return new_iou_thr, new_beta
